@@ -1,0 +1,8 @@
+name            = "pamdingal-contact"
+main            = "worker/index.js"
+compatibility_date = "2025-04-01"
+
+[vars]
+CONTACT_EMAIL = "pamdingal@apiis.org"
+# Set DKIM_DOMAIN, DKIM_SELECTOR, DKIM_PRIVATE_KEY as Secrets in the Cloudflare dashboard
+# or via: wrangler secret put DKIM_PRIVATE_KEY
