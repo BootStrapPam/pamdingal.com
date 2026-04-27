@@ -21,7 +21,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Inter", sans-serif;
   color: var(--text);
   line-height: 1.6;
   background:
@@ -35,7 +35,7 @@ h2,
 h3 {
   margin: 0 0 0.75rem;
   line-height: 1.2;
-  font-family: "Sora", sans-serif;
+  font-family: "Lora", serif;
 }
 
 p {
@@ -264,7 +264,7 @@ a {
 }
 
 .project-img-label {
-  font-family: "Sora", sans-serif;
+  font-family: "Lora", serif;
   font-weight: 700;
   font-size: 0.9rem;
   color: var(--accent);
