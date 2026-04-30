@@ -17,72 +17,104 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="site-header" id="top">
-      <nav class="container nav-wrap">
-        <a class="brand" href="#top">Pam Dingal</a>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="top">
+      <div class="navbar-container container">
+        <a href="#top" class="navbar-brand">Pam Dingal</a>
+
         <button class="menu-toggle" aria-expanded="false" aria-controls="site-menu">Menu</button>
-        <ul class="nav-links" id="site-menu">
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#resume">Resume</a></li>
-          <li><a href="#blog">Blog</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
+
+        <div class="navbar-links" id="site-menu">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#resume" class="nav-link">Resume</a>
+          <a href="#blog" class="nav-link">Blog</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+
+        <a href="#contact" class="btn btn-navy navbar-cta">Hire Me!</a>
+      </div>
+    </nav>
 
     <main>
+
       <!-- HERO -->
-      <section class="hero section" id="hero">
-        <div class="container hero-grid">
-          <div>
-            <p class="eyebrow">Developer Portfolio</p>
-            <h1>I build apps for education, mission, and community.</h1>
-            <p class="lead">
-              I am a developer specializing in educational platforms, missional tools, and community
-              management systems. I build cross-platform web and mobile applications that help
-              organizations connect, teach, and scale up.
-            </p>
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="#projects">See My Work</a>
-              <a class="btn btn-ghost" href="#contact">Get in Touch</a>
+      <header class="hero">
+        <div class="container hero-center">
+          <p class="eyebrow">Developer Portfolio</p>
+          <h1>I build apps for education, mission, and community.</h1>
+          <p class="lead">
+            I am a developer specializing in educational platforms, missional tools, and community
+            management systems. I build cross-platform web and mobile applications that help
+            organizations connect, teach, and scale up.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-light" href="#projects">See My Work</a>
+            <a class="btn btn-outline-light" href="#contact">Get in Touch</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- QUICK FEATURES -->
+      <section class="section features-section">
+        <div class="container">
+          <div class="features-row">
+            <div class="feature-item">
+              <h3>Educate</h3>
+              <p>Building platforms that deliver lessons and learning to students everywhere.</p>
+            </div>
+            <div class="feature-item">
+              <h3>Connect</h3>
+              <p>Community systems that bring people together for ministry and mission.</p>
+            </div>
+            <div class="feature-item">
+              <h3>Build</h3>
+              <p>Cross-platform apps and web tools that organizations can actually use.</p>
             </div>
           </div>
-          <aside class="hero-card" aria-label="Quick profile">
-            <h2>Tech I use</h2>
-            <ul>
-              <li><strong>Mobile:</strong> Flutter · Dart</li>
-              <li><strong>Web:</strong> HTML · CSS · JavaScript</li>
-              <li><strong>Backend:</strong> MySQL · Cloudflare Workers</li>
-              <li><strong>Cloud:</strong> Cloudflare Pages · Azure</li>
-              <li><strong>Languages:</strong> Python · Java · SQL</li>
-            </ul>
-          </aside>
         </div>
       </section>
 
       <!-- ABOUT -->
       <section class="section" id="about">
-        <div class="container about-wrap">
-          <div>
-            <p class="eyebrow">About</p>
-            <h2>Building technology with purpose</h2>
-            <p>
-              I am Pam Dingal, a 3rd-year BSIT student at Central Philippine University, Jaro
-              Iloilo. My work sits at the intersection of technology and purpose — I build tools
-              that serve educational institutions, mission organizations, and community groups.
-            </p>
-            <p>
-              Whether it is a lesson-access app for a mission team in Malaysia or a community
-              registration system for a local ministry, I focus on practical solutions that real
-              people and organizations can use.
-            </p>
-            <a
-              class="btn btn-ghost"
-              href="https://www.linkedin.com/in/pamdingal2023"
-              target="_blank"
-              rel="noopener noreferrer"
-            >View LinkedIn Profile</a>
+        <div class="container">
+          <p class="eyebrow">About</p>
+          <h2>Building technology with purpose</h2>
+          <div class="about-cards">
+            <div class="card">
+              <div class="card-body">
+                <h5>Who I Am</h5>
+                <p>
+                  I am Pam Dingal, a 3rd-year BSIT student at Central Philippine University, Jaro
+                  Iloilo. My work sits at the intersection of technology and purpose — I build tools
+                  that serve educational institutions, mission organizations, and community groups.
+                </p>
+                <p>
+                  Whether it is a lesson-access app for a mission team in Malaysia or a community
+                  registration system for a local ministry, I focus on practical solutions that real
+                  people and organizations can use.
+                </p>
+                <a
+                  class="card-link"
+                  href="https://www.linkedin.com/in/pamdingal2023"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >View LinkedIn Profile</a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h5>Tech I Use</h5>
+                <ul>
+                  <li><strong>Mobile:</strong> Flutter · Dart</li>
+                  <li><strong>Web:</strong> HTML · CSS · JavaScript</li>
+                  <li><strong>Backend:</strong> MySQL · Cloudflare Workers</li>
+                  <li><strong>Cloud:</strong> Cloudflare Pages · Azure</li>
+                  <li><strong>Languages:</strong> Python · Java · SQL</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -336,13 +368,15 @@
                 required
               ></textarea>
             </div>
-            <button class="btn btn-primary" type="submit" id="submitBtn">Send Message</button>
+            <button class="btn btn-navy" type="submit" id="submitBtn">Send Message</button>
             <p class="form-status" id="formStatus" aria-live="polite"></p>
           </form>
         </div>
       </section>
+
     </main>
 
+    <!-- FOOTER -->
     <footer class="site-footer">
       <div class="container footer-wrap">
         <p>&copy; <span id="year"></span> Pam Dingal</p>

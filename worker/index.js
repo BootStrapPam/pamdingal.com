@@ -6,6 +6,12 @@ const CORS = {
 
 export default {
   async fetch(request, env) {
+    const url = new URL(request.url);
+
+    if (url.pathname !== "/api/contact") {
+      return new Response("Not Found", { status: 404 });
+    }
+
     if (request.method === "OPTIONS") {
       return new Response(null, { status: 204, headers: CORS });
     }
@@ -31,41 +37,18 @@ export default {
       return json({ ok: false, error: "Invalid email address." }, 400);
     }
 
-    // Send via MailChannels (free on Cloudflare Workers with DKIM configured)
-    // Setup guide: https://support.mailchannels.com/hc/en-us/articles/16918954360845
-    const payload = {
-      personalizations: [
-        {
-          to: [{ email: env.CONTACT_EMAIL ?? "pamdingal@apiis.org", name: "Pam Dingal" }],
-          dkim_domain: env.DKIM_DOMAIN,        // your domain, e.g. "pamdingal.com"
-          dkim_selector: env.DKIM_SELECTOR,    // e.g. "mailchannels"
-          dkim_private_key: env.DKIM_PRIVATE_KEY,
-        },
-      ],
-      from: { email: "contact@pamdingal.com", name: "Portfolio Contact Form" },
-      reply_to: { email, name },
-      subject: `New message from ${name} — pamdingal.com`,
-      content: [
-        {
-          type: "text/plain",
-          value: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-        },
-      ],
-    };
-
-    const resp = await fetch("https://api.mailchannels.net/tx/v1/send", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-
-    if (resp.status >= 400) {
-      const errText = await resp.text();
-      console.error("MailChannels error:", resp.status, errText);
-      return json({ ok: false, error: "Could not deliver message. Please try again." }, 500);
+    try {
+      await env.DB.prepare(
+        "INSERT INTO contacts (name, email, message, submitted_at) VALUES (?, ?, ?, ?)"
+      )
+        .bind(name, email, message, new Date().toISOString())
+        .run();
+    } catch (err) {
+      console.error("D1 insert error:", err);
+      return json({ ok: false, error: "Could not save your message. Please try again." }, 500);
     }
 
-    return json({ ok: true, message: "Message sent!" });
+    return json({ ok: true, message: "Message received! I will get back to you soon." });
   },
 };
 

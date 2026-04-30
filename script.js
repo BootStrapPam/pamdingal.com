@@ -32,8 +32,7 @@ const contactForm = document.querySelector("#contactForm");
 const formStatus = document.querySelector("#formStatus");
 const submitBtn = document.querySelector("#submitBtn");
 
-// Replace this URL after you deploy the Worker (run: wrangler deploy)
-const WORKER_URL = "https://pamdingal-contact.YOUR_SUBDOMAIN.workers.dev";
+const WORKER_URL = "/api/contact";
 
 if (contactForm) {
   contactForm.addEventListener("submit", async (e) => {
