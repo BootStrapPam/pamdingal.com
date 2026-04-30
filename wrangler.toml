@@ -1,4 +1,4 @@
-name            = "pamdingal-contact"
+name = "pamdingal"
 main            = "worker/index.js"
 compatibility_date = "2025-04-01"
 
